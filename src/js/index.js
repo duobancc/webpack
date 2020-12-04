@@ -1,4 +1,4 @@
-import createHeading from './js/heading'
+import createHeading from './heading'
 
 const heading = createHeading()
 

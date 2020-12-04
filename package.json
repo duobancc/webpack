@@ -4,8 +4,11 @@
   "description": "学习webpack",
   "main": "index.js",
   "license": "MIT",
+  "scripts":{
+    "build":"webpack"
+  },
   "dependencies": {
-    "webpack": "^5.9.0",
+    "webpack": "4.42.1",
     "webpack-cli": "^4.2.0"
   },
   "devDependencies": {
