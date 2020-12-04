@@ -30,8 +30,11 @@ v4.42.1
 ``` 
 
 npx webpack
-这个命令在执行的过程中，Webpack 会自动从 src/index.js 文件开始打包，然后根据代码中的模块导入操作，自动将所有用到的模块代码打包到一起。
-完成之后，控制台会提示：顺着 index.js 有两个 JS 文件被打包到了一起。与之对应的就是项目的根目录下多出了一个 dist 目录，我们的打包结果就存放在这个目录下的 main.js 文件中，具体操作如下图所示：
+这个命令在执行的过程中，Webpack 会自动从 src/index.js 文件开始打包，
+然后根据代码中的模块导入操作，自动将所有用到的模块代码打包到一起。
+完成之后，控制台会提示：顺着 index.js 有两个 JS 文件被打包到了一起。
+与之对应的就是项目的根目录下多出了一个 dist 目录，
+我们的打包结果就存放在这个目录下的 main.js 文件中
 ```
 
 ### webpack 打包过程
@@ -70,6 +73,41 @@ module.exports = {
 
 [更多配置](https://webpack.js.org/configuration/#options)
 
+### webpack 配置文件实现智能提示
 
+```
+方式一：
+// 一定记得运行 Webpack 前先注释掉这里。
+// import { Configuration } from 'webpack' 
+/**
+ * @type {Configuration}
+ */
+const config = {
+  entry: './src/index.js',
+  output: {
+    filename: 'bundle.js'
+  }
+}
 
-* webpack 三种工作模式
+module.exports = config
+方拾贰： 
+/** @type {import('webpack').Configuration} */
+直接在类型注释中使用 import 动态导入类型
+```
+
+### webpack 工作模式
+* production 启动内置优化插件，自动优化打包结果，打包速度偏慢
+* development 自动优化打包速度，添加一些调试过程中的辅助插件
+* none 运行最原始的打包，不做任何额外处理。
+
+* **修改webpack工作模式的方式**
+> 通过CLI --mode 参数传入;
+> 通过配置文件设置mode 属性;
+
+[工作模式详细](https://webpack.js.org/configuration/mode/)
+
+### 打包结果运行原理
+
+* 立即执行函数
+* 浏览器单步调试
+* none 模式
