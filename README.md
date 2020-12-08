@@ -111,3 +111,15 @@ module.exports = config
 * 立即执行函数
 * 浏览器单步调试
 * none 模式
+
+### loader
+
+[file-loader](https://webpack.js.org/loaders/file-loader)
+[url-loader](https://webpack.js.org/loaders/url-loader)
+[babel-loader](https://webpack.js.org/loaders/babel-loader)
+[style-loader](https://webpack.js.org/loaders/style-loader)
+[css-loader](https://webpack.js.org/loaders/css-loader)
+[sass-loader](https://webpack.js.org/loaders/sass-loader)
+[postcss-loader](https://webpack.js.org/loaders/postcss-loader)
+[eslint-loader](https://github.com/webpack-contrib/eslint-loader)
+[vue-loader](https://github.com/vuejs/vue-loader)
