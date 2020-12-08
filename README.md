@@ -123,7 +123,7 @@ module.exports = config
 > Webpack 是用 Loader（加载器）来处理每个模块的，而内部默认的 Loader 只能处理 JS 模块，
 > 如果需要加载其他类型的模块就需要配置不同的 Loader。
 
-[](https://s0.lgstatic.com/i/image3/M01/13/A8/Ciqah16gAM2AVBOyAACbAmBWOWM473.png)
+![](https://s0.lgstatic.com/i/image3/M01/13/A8/Ciqah16gAM2AVBOyAACbAmBWOWM473.png)
 
 * **加载器的使用方式**
 
@@ -174,13 +174,13 @@ module.exports = {
 * 首先是 test 属性，它是一个正则表达式，用来匹配打包过程中所遇到文件路径，这里我们是以 .css 结尾
 * 然后是 use 属性，它用来指定匹配到的文件需要使用的 loader，这里用到的是 css-loader
 
-[](https://s0.lgstatic.com/i/image3/M01/06/79/CgoCgV6gAQyAVv7XAAAyFU_9fDQ769.png)
+![](https://s0.lgstatic.com/i/image3/M01/06/79/CgoCgV6gAQyAVv7XAAAyFU_9fDQ769.png)
 
 * **样式模块加载的问题**
 
 > 此时，如果你尝试在页面中使用这里输出的 bundle.js 文件，你会发现刚刚的这个 main.css 模块并没有工作。
 
-[](https://s0.lgstatic.com/i/image3/M01/06/79/CgoCgV6gARSAXyX_AAFkFP2Qek8997.png)
+![](https://s0.lgstatic.com/i/image3/M01/06/79/CgoCgV6gARSAXyX_AAFkFP2Qek8997.png)
 > 发现 css-loader 只会(负责)把 css 模块加载到js 代码中，而并不会使用这个模块
 > 所以这里我们还需要在 css-loader 的基础上再使用一个 style-loader，
 > 把 css-loader 转换后的结果通过 style 标签追加到页面上
@@ -239,7 +239,7 @@ module.exports = {
 > Webpack 加载资源文件的过程类似于一个工作管道，你可以在这个过程中依次使用多个 Loader，
 > 但是最终这个管道结束过后的结果必须是一段标准的 JS 代码字符串。
 
-[](https://s0.lgstatic.com/i/image3/M01/06/7D/CgoCgV6gA8SAfv7-AAA9hfxlofw372.png)
+![](https://s0.lgstatic.com/i/image3/M01/06/7D/CgoCgV6gA8SAfv7-AAA9hfxlofw372.png)
 
 > 在loader 的js 中 输入你需要处理的文件内容
 > loader 中使用一些函数 将该内容处理 成 符合 js 标准的字符串 
@@ -267,9 +267,13 @@ module.exports = source => {
 
 
 [file-loader](https://webpack.js.org/loaders/file-loader)
+
 [url-loader](https://webpack.js.org/loaders/url-loader)
+
 [babel-loader](https://webpack.js.org/loaders/babel-loader)
+
 [style-loader](https://webpack.js.org/loaders/style-loader)
+
 [css-loader](https://webpack.js.org/loaders/css-loader)
 [sass-loader](https://webpack.js.org/loaders/sass-loader)
 [postcss-loader](https://webpack.js.org/loaders/postcss-loader)
