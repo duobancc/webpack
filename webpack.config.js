@@ -8,7 +8,7 @@ const path = require('path')
 
 module.exports = {
     mode: 'none',
-    entry: './src/main.css',
+    entry: './src/03-使用loader加载特殊资源/markdown-loader/main.js',
     output: {
         filename: 'bundle.js',
         path: path.join(__dirname, 'build')
@@ -21,6 +21,10 @@ module.exports = {
                     'style-loader',
                     'css-loader'
                 ]
+            },
+            {
+                test: /\.md$/,
+                use: './markdown-loader.js'
             }
         ]
     }
