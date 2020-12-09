@@ -1,14 +1,17 @@
+// 导入一个安装好的插件
 
 // import { Configuration } from 'webpack'
 // 运行webpack 时一定要记得注释该 import 语句
 /** @type { import('webpack').Configuration }*/
-
-
+const htmlWebpackPlugin = require('html-webpack-plugin')
+const copyWebpackPlugin = require('copy-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const RemoveCommentsPlugin = require('./remove-comments-plugin')
 const path = require('path')
 
 module.exports = {
     mode: 'none',
-    entry: './src/03-使用loader加载特殊资源/markdown-loader/main.js',
+    entry: './src/04-webpack-plugins/src/main.js',
     output: {
         filename: 'bundle.js',
         path: path.join(__dirname, 'build')
@@ -30,6 +33,26 @@ module.exports = {
                 ]
             }
         ]
-    }
+    },
+    plugins: [
+        new CleanWebpackPlugin(),
+        new htmlWebpackPlugin({
+            title: 'html 插件',
+            // meta: {
+            //     viewport: 'width=device-width'
+            // }
+            template:'./src/index.html' // 引用模板
+        }),
+        // 生成另一个 html 页面
+        new htmlWebpackPlugin({
+            filename: 'about.html'
+        }),
+        new copyWebpackPlugin({
+            patterns: ['./README.md'] // 需要拷贝的目录或者路径通配符
+        }),
+        // 自己的插件
+        new RemoveCommentsPlugin()
+    ]
+
 
 }
