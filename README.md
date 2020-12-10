@@ -265,7 +265,6 @@ module.exports = source => {
 
 ```
 
-
 [file-loader](https://webpack.js.org/loaders/file-loader)
 
 [url-loader](https://webpack.js.org/loaders/url-loader)
@@ -279,3 +278,83 @@ module.exports = source => {
 [postcss-loader](https://webpack.js.org/loaders/postcss-loader)
 [eslint-loader](https://github.com/webpack-contrib/eslint-loader)
 [vue-loader](https://github.com/vuejs/vue-loader)
+
+### Plugin
+
+> Plugin 则是用来解决项目中除了资源模块打包以外的其他自动化工作
+> 我在这里先介绍几个插件最常见的应用场景：
+```
+* 实现自动在打包之前清除 dist 目录（上次的打包结果）；
+
+* 自动生成应用所需要的 HTML 文件；
+
+* 根据不同环境为代码注入类似 API 地址这种可能变化的部分；
+
+* 拷贝不需要参与打包的资源文件到输出目录；
+
+* 压缩 Webpack 打包完成后输出的文件；
+
+* 自动发布打包结果到服务器实现自动部署。
+```
+
+* **使用**
+> 安装 相关插件
+> 配置webpack.config
+
+```
+$ npm install clean-webpack-plugin --save-dev
+// ./webpack.config.js
+
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+
+module.exports = {
+  entry: './src/main.js',
+  output: {
+    filename: 'bundle.js'
+  },
+  plugins: [
+    new CleanWebpackPlugin(),
+    new OtherWebpackPlugin({
+      <!-- 配置参数 -->
+      parmas:{
+
+      }
+    }),
+    new MoreOtherWebpackPlugin({}), //添加多个实例
+  ]
+}
+
+```
+
+* **插件机制**
+
+> Webpack 的插件机制就是我们在软件开发中最常见的钩子机制。
+> 钩子机制也特别容易理解，它有点类似于 Web 中的事件。
+> 在 Webpack 整个工作过程会有很多环节，为了便于插件的扩展，Webpack 几乎在每一个环节都埋下了一个钩子。
+
+* 具体有哪些预先定义好的钩子，我们可以参考官方文档的 API：
+> [complier Hooks](https://webpack.js.org/api/compiler-hooks/)
+> [Compilation]()
+> [JavaScriptParser]()
+
+> Webpack 要求我们的插件必须是一个函数或者是一个包含 apply 方法的对象，一般我们都会定义一个类型，
+> 在这个类型中定义 apply 方法。然后在使用时，再通过这个类型来创建一个实例对象去使用这个插件。
+
+```
+// ./remove-comments-plugin.js
+
+class RemoveCommentsPlugin {
+
+  apply (compiler) {
+
+    console.log('RemoveCommentsPlugin 启动')
+
+    // compiler => 包含了我们此次构建的所有配置信息
+
+  }
+
+}
+
+```
+
+> plugin => 更强大的 loader ?
