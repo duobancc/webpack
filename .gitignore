@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+*/node_modules
+SRQC-webpack/chapter-1/node_modules
 /.pnp
 .pnp.js
 
