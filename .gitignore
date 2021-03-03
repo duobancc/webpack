@@ -4,6 +4,11 @@
 /node_modules
 */node_modules
 SRQC-webpack/chapter-1/node_modules
+SRQC-webpack/chapter-2/node_modules
+SRQC-webpack/chapter-3/node_modules
+SRQC-webpack/chapter-4/node_modules
+SRQC-webpack/chapter-5/node_modules
+SRQC-webpack/chapter-6/node_modules
 /.pnp
 .pnp.js
 
